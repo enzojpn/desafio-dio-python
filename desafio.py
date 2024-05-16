@@ -16,7 +16,7 @@ LIMITE_SAQUES = 3
 def depositar(valor , saldo , extrato):
     if valor > 0:
         saldo += valor
-        extrato += f"Deposito = {valor:.2f}\n"
+        extrato += f"Deposito = {valor:.2f}\n"         
         print(f"saldo {saldo}" )
     else:
         print("valor negativo - deposito invalido")
@@ -36,6 +36,12 @@ def sacar(saldo ,limite ,extrato, numero_saque , LIMITE_SAQUES ):
         print(f"valor {saldo}")
     return saldo , extrato , numero_saque
 
+def consultar_extrato():
+    print("\n============Extrato Bancario============")
+    print("Não existe lancamento no extrato" if not extrato else extrato)
+    print(f"SALDO TOTAL:  R$ {saldo:.2f}")
+    print("\n============END============")
+
 while True :
     opcao = input(menu)
 
@@ -49,10 +55,7 @@ while True :
         saldo , extrato, numero_saque=  sacar(saldo ,limite ,extrato, numero_saque , LIMITE_SAQUES )
    
     elif opcao == "e":
-        print("\n============Extrato Bancario============")
-        print("Não existe lancamento no extrato" if not extrato else extrato)
-        print(f"SALDO TOTAL:  R$ {saldo:.2f}")
-        print("\n============END============")
+        consultar_extrato()
     elif opcao == "q":
         break
     else:
